@@ -24,8 +24,8 @@ function getTimeStringFromSeconds(secs) {
 
 function loadAudioplayer(productId) {
     let music = document.getElementById('music' + productId); //html audio element
-    let pButton = document.getElementById('pButton' + productId); //play button
-    let timeSpan = document.getElementById('timeSpan' + productId); //timePosition span
+    let pButton = document.getElementById('pbutton' + productId); //play button
+    let timeSpan = document.getElementById('timespan' + productId); //timePosition span
     pButton.style.cursor = "pointer";
     music.onloadedmetadata = function () {
         timeSpan.textContent = startTimeString + tdSeparator + getTimeStringFromSeconds(music.duration);
@@ -52,10 +52,10 @@ function timeupdate(event) {
     let music = event.target;
     if (music.getAttribute("class") === "audio-clip") {
         let id = music.getAttribute('data-id')
-        let timeSpan = document.getElementById('timeSpan' + id);
+        let timeSpan = document.getElementById('timespan' + id);
 
         if (music.ended) {
-            let pButton = document.getElementById('pButton' + id);
+            let pButton = document.getElementById('pbutton' + id);
             //Switch pButton to a play button
             if (pButton.children[0].getAttribute("class") === pauseSvgClass) {
                 pButtonSwitch(pButton);
@@ -71,7 +71,7 @@ function play(event) {
     let pButton = null;
 
     //Making sure pButton is referencing the span element
-    if (event.target.parentElement.className === "pButton") {
+    if (event.target.parentElement.className === "pbutton") {
         pButton = event.target.parentElement;
     } else {
         pButton = event.target.parentElement.parentElement;
@@ -91,7 +91,8 @@ function play(event) {
 }
 
 var productsMiniatures = document.getElementsByClassName("product-miniature js-product-miniature")
-if (productsMiniatures !== null) {
+var productDescription = document.querySelector("div[id^=\"product-description-short-\"]");
+if (productsMiniatures !== null && productsMiniatures.length > 0) {
     Array.prototype.forEach.call(productsMiniatures, function (product) {
         let dataIdProduct = product.getAttribute("data-id-product");
         let music = document.getElementById('music' + dataIdProduct);
@@ -100,5 +101,9 @@ if (productsMiniatures !== null) {
         }
     });
 } else {
-    loadAudioplayer("1");
+    let music = document.querySelector("audio[id^=\"music\"]");
+    if(music != null) {
+        let productId = parseInt(music.id.slice(5));
+        loadAudioplayer(productId);
+    }
 }

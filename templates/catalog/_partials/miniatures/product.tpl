@@ -98,14 +98,14 @@
                         style="display:flex; align-items: center; justify-content: space-around; margin-top: 0.2em; margin-bottom: 0.2em;">
                         <span></span>
                         <span></span>
-                        <span class="pButton" id="pButton{$product.id_product}" data-id="{$product.id_product}" style="display: inline-block;">
+                        <span class="pbutton" id="pbutton{$product.id_product}" data-id="{$product.id_product}" style="display: inline-block;">
                             <svg width="1.6em" height="1.6em" viewBox="0 0 16 16" class="bi bi-play-fill"
                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z" />
                             </svg>
                         </span>
-                        <span class="timeSpan" id="timeSpan{$product.id_product}" style="font-size: 1em;">0:00 / 0:00</span>
+                        <span class="timespan" id="timespan{$product.id_product}" style="font-size: 1em;">0:00 / 0:00</span>
                         <span></span>
                         <span></span>
                     </div>
